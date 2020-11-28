@@ -4,7 +4,7 @@
 
 ![alt]('./views/public/assets/img/layout.pgn)
 
-### **technologies used**
+### **technologies use**
 
 - HTML
 - CSS
