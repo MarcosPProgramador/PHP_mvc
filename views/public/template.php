@@ -19,7 +19,7 @@
         
         ?>
     </main> 
-    <script src="<?php echo PATH;?>views/public/js/parallax.js"></script>
+    <script src="./views/public/js/parallax.js"></script>
 
 </body>
 </html>

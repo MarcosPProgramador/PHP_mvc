@@ -16,6 +16,12 @@ const $ = <T>(elm?: T, bool?: boolean) => {
             return query(elm).getAttribute(qualifiedName);
         if (elm instanceof Element) return elm.getAttribute(qualifiedName);
     };
+    const add = (cls: string) => {
+        if (typeof elm == "string") query(elm).classList.add(cls);
+    };
+    const remove = (cls: string) => {
+        if (typeof elm == "string") query(elm).classList.remove(cls);
+    };
     const each = (
         callbackfn: (
             value: Element,
@@ -31,15 +37,27 @@ const $ = <T>(elm?: T, bool?: boolean) => {
     const css = (style: keyFor) => {
         for (const key in style) {
             const value = style[key];
+            const nKey = key.replace(/([A-Z])/, "-$1").toLowerCase();
             if (typeof elm == "string")
-                query(elm).style.setProperty(key, value)
+                query(elm).style.setProperty(nKey, value);
+            if (elm instanceof HTMLElement) elm.style.setProperty(nKey, value);
         }
     };
-    return { event, attr, each, css, query, querys };
+    return { event, attr, each, css, query, querys, add, remove };
 };
 const layers = $(".overlay__layer", true);
-const bg = $(".background-sign__parallax");
-layers.each((elm) => {
-    const attr = $(elm).attr("data-speed");
-    console.log(attr);
+const animateWidthAndHeight = $(".overlay__animate");
+
+setTimeout(() => {
+    animateWidthAndHeight.add("full");
+}, 500);
+$(document).event("mousemove", (e) => {
+    layers.each((elm) => {
+        let event = <MouseEvent>e;
+        const speedImage = $(elm).attr("data-speed");
+
+        const x = (window.innerWidth - event.pageX * Number(speedImage)) / 100;
+        const y = (window.innerHeight - event.pageY * Number(speedImage)) / 100;
+        $(elm).css({ transform: `translate(${x}px, ${y}px)` });
+    });
 });
