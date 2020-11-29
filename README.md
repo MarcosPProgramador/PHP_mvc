@@ -1,15 +1,17 @@
 # Project create by Marcos Proença
-## Before you start, download the dependencies | **yarn**
-###  Preview
 
-![alt]('./views/public/assets/img/layout.pgn)
+## Before you start, download the dependencies | **yarn**
+
+### Preview
+
+![signIn](./views/public/assets/img/layout.png)
 
 ### **technologies used**
 
-- HTML
-- CSS
-- TypeScript
-- git
-- yarn
+-   HTML
+-   CSS
+-   TypeScript
+-   git
+-   yarn
 
-##  **Front-end** && **Back-end**
+## **Front-end** && **Back-end**
