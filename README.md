@@ -11,6 +11,7 @@
 -   HTML
 -   CSS
 -   MVC
+-   PHP
 -   TypeScript
 -   git
 -   yarn
