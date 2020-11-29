@@ -10,6 +10,7 @@
 
 -   HTML
 -   CSS
+-   MVC
 -   TypeScript
 -   git
 -   yarn
