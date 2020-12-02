@@ -14,4 +14,3 @@ gulp.task('sass', function () {
 gulp.task('default', function () {
     gulp.watch(src, gulp.series('sass'))
 })
-// 
