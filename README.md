@@ -4,7 +4,12 @@
 
 ### Preview
 
-![signIn](./views/public/assets/img/layout.png)
+-   desktop
+
+    ![desktop](./views/public/assets/img/layout-desktop.png)
+-   mobile
+
+    ![mobile](./views/public/assets/img/layout-mobile.png)
 
 ### **technologies used**
 
