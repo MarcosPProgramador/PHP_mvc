@@ -1,0 +1,9 @@
+.cover-form__group {
+  display: flex; }
+  .cover-form__group input {
+    width: 100%; }
+  .cover-form__group input[type='submit'] {
+    color: #222;
+    background-color: #fff; }
+  .cover-form__group input[type='submit']:hover {
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.8); }

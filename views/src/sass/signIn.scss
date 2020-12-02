@@ -1,0 +1,18 @@
+@import './breakpoint';
+
+.cover-form {
+
+    &__group {
+        display: flex;
+        input {
+            width: 100%;
+        }
+        input[type='submit'] {
+            color: #222;
+            background-color: #fff;
+        }
+        input[type='submit']:hover {
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.8);
+        }
+    }
+}

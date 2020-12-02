@@ -25,16 +25,15 @@ main {
     color: #f0f8ff;
     background-color: #ff89be;
 }
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
     height: 7px;
     width: 7px;
 }
-*::-webkit-scrollbar-thumb{
+*::-webkit-scrollbar-thumb {
     border-radius: 50rem;
     background-color: #222;
 }
 input {
-    width: 400px;
     margin: 5px 0;
     padding: 10px 20px;
     border: 0;
@@ -45,15 +44,16 @@ input[type='submit'] {
     cursor: pointer;
     color: #f0f0f0;
     font-weight: bold;
-    background-color: #f72585;
-    width: 200px !important;
+    background-color: #f72553;
+    width: 100%;
+    max-width: 200px !important;
     transition-delay: 500ms;
     transition-property: box-shadow;
     transform-style: flat;
     transition-duration: 500ms;
 }
 input[type='submit']:hover {
-    box-shadow: 0 0 3px #f72585, 0 0 6px #f72585;
+    box-shadow: 0 0 3px #f72553, 0 0 6px #f72553;
 }
 /* framework */
 .bg {
@@ -79,8 +79,12 @@ input[type='submit']:hover {
 .ps-r {
     position: relative !important;
 }
+.d-f {
+    display: flex;
+}
 /* :: */
-
+/* layouts ../layouts */
+/* layouts ../layouts/singIn.html && ../layouts/singUp.html */
 .background-sign {
     height: 100vh;
     min-height: 700px;
@@ -138,9 +142,33 @@ input[type='submit']:hover {
 }
 .background-sign .background-sign__cover {
     padding-top: 100px;
+    height: 80%;
     position: relative;
     z-index: 2;
 }
+.background-sign .background-sign__cover .cover-form {
+    position: absolute;
+    right: 10%;
+
+    top: 50%;
+    transform: translate(0, -50%);
+
+    border-radius: 20px;
+    padding: 50px 8px 100px;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    max-width: 400px;
+}
+.background-sign .background-sign__cover .cover-form h2 {
+    margin-bottom: 20px;
+}
+@media screen and (max-width: 768px) {
+    .background-sign .background-sign__cover .cover-form {
+        transform: translate(50%, -50%);
+        right: 50%;
+    }
+}
+/* :: */
 
 /* templates ../templates/ */
 /* headerSign ../templates/headerSign.html */
@@ -174,11 +202,133 @@ input[type='submit']:hover {
     width: 20px;
     height: 20px;
 }
+.items-join {
+    align-items: center;
+}
 .nav__navbar .navbar__list {
     display: flex;
 }
 .nav__navbar .navbar__list .list__tab {
     list-style: none;
+}
+.button-burger .button-burger__button {
+    display: none;
+}
+.nav__navbar-mobile {
+    display: none;
+}
+@media screen and (max-width: 768px) {
+    .button-burger .button-burger__button {
+        margin-left: 20px;
+        border: 0;
+        cursor: pointer;
+        background-color: transparent;
+        color: #fff;
+
+        position: relative;
+        display: block;
+        z-index: 10;
+        width: 50px;
+        height: 50px;
+    }
+    .button-burger__button span {
+        pointer-events: none;
+        top: 50%;
+
+        display: block;
+        background-color: #fff;
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        transform: translateY(-300%);
+        transition: 500ms transform cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    .button-burger__button::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .button-burger__button span:nth-child(1) {
+        transform: translateY(200%);
+    }
+    .button-burger__button.active span:nth-child(1) {
+        transform: translateY(0) rotateZ(45deg);
+    }
+    .button-burger__button.active span:nth-last-child(1) {
+        transform: translateY(0) rotateZ(-45deg);
+    }
+    .items-join .nav__navbar .navbar__list .list__tab .btn-desktop {
+        order: 2;
+        display: none;
+    }
+    .nav__navbar-mobile.nav__navbar .navbar-mobile__right {
+        height: 100%;
+    }
+    .nav__navbar-mobile.nav__navbar .navbar__list {
+        height: 100%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .nav__navbar-mobile.nav__navbar .navbar__list .list__tab .btn-mobile {
+        text-align: center;
+        display: block;
+
+        width: 100%;
+    }
+    .nav__navbar-mobile.nav__navbar .navbar__list .list__tab {
+        padding: 0 5%;
+        width: 100%;
+    }
+    .nav__navbar-mobile.nav__navbar .navbar__list .list__tab .list__tab__grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 100px);
+        gap: 3px;
+        margin-bottom: 30px;
+    }
+    .nav__navbar-mobile.nav__navbar
+        .navbar__list
+        .list__tab
+        .list__tab__grid
+        .list__tab__grid__child {
+        overflow: hidden;
+        border-radius: 4px;
+        background-color: rgba(250, 250, 250, 0.1);
+    }
+    .nav__navbar-mobile.nav__navbar
+        .navbar__list
+        .list__tab
+        .list__tab__grid
+        .list__tab__grid__child
+        img {
+        object-fit: cover;
+
+        width: 100%;
+        height: 100%;
+    }
+    .nav__navbar-mobile {
+        z-index: 4;
+        position: absolute;
+        width: 100%;
+        height: 128vh;
+        padding-top: 60px;
+        padding-bottom: calc(28vh + 60px);
+        background-color: rgba(0, 0, 0, 0.9);
+        max-width: 400px;
+        top: 0;
+        right: -450px;
+        display: block;
+        transition: 400ms right ease-in-out;
+    }
+    .nav__navbar-mobile.active {
+        right: 0;
+    }
 }
 .nav__navbar .navbar__list .list__tab .tab__link.bg-full {
     background-color: #f0f0f0;
@@ -200,9 +350,8 @@ input[type='submit']:hover {
 .footer-container {
     height: 100px;
     background-color: #14151d;
-    
 }
-.footer-container .footer-container__copyright{
+.footer-container .footer-container__copyright {
     font-size: 15px;
     bottom: 15px;
     left: 50%;
@@ -244,9 +393,10 @@ input[type='submit']:hover {
     .footer-container__move
     .footer-container__datas
     .datas__contact
-    .contact__info .info__cellphone{
-        font-size: 10px;
-    }
+    .contact__info
+    .info__cellphone {
+    font-size: 10px;
+}
 .footer-container
     .footer-container__move
     .footer-container__datas

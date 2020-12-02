@@ -1,0 +1,7 @@
+.cover-form__group:nth-child(1) {
+  display: flex; }
+  .cover-form__group:nth-child(1) input:nth-last-child(1) {
+    margin-left: 10px; }
+
+.cover-form__group input {
+  width: 100%; }

@@ -22,6 +22,12 @@ var $ = function (elm, bool) {
         if (typeof elm == 'string')
             query(elm).classList.remove(cls);
     };
+    var toggle = function (cls) {
+        if (typeof elm == 'string')
+            return query(elm).classList.toggle(cls);
+        if (elm instanceof HTMLElement)
+            return elm.classList.toggle(cls);
+    };
     var each = function (callbackfn) {
         if (bool && typeof elm == 'string')
             querys(elm).forEach(callbackfn);
@@ -36,19 +42,27 @@ var $ = function (elm, bool) {
                 elm.style.setProperty(nKey, value);
         }
     };
-    return { event: event, attr: attr, each: each, css: css, query: query, querys: querys, add: add, remove: remove };
+    return { event: event, attr: attr, each: each, css: css, query: query, querys: querys, add: add, remove: remove, toggle: toggle };
 };
 var layers = $('.overlay__layer', true);
 var animateWidthAndHeight = $('.overlay__animate');
 setTimeout(function () {
     animateWidthAndHeight.add('full');
 }, 700);
-$(document).event('mousemove', function (e) {
+$(document).event('mousemove', (function (e) {
     layers.each(function (elm) {
-        var event = e;
         var speedImage = $(elm).attr('data-speed');
-        var x = (window.innerWidth - event.pageX * Number(speedImage)) / 100;
-        var y = (window.innerHeight - event.pageY * Number(speedImage)) / 100;
+        var x = (window.innerWidth - e.pageX * Number(speedImage)) / 100;
+        var y = (window.innerHeight - e.pageY * Number(speedImage)) / 100;
         $(elm).css({ transform: "translate(" + x + "px, " + y + "px)" });
     });
-});
+}));
+$('#btn-nav').event('click', (function (event) {
+    var buttonNavbar = event.target;
+    var is = $(buttonNavbar).toggle('active');
+    if (is)
+        $('main').css({ overflow: 'hidden' });
+    else
+        $('main').css({ overflowY: 'auto' });
+    $('#navbar').toggle('active');
+}));

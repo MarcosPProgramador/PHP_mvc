@@ -22,6 +22,10 @@ const $ = <T>(elm?: T, bool?: boolean) => {
     const remove = (cls: string) => {
         if (typeof elm == 'string') query(elm).classList.remove(cls)
     }
+    const toggle = (cls: string) => {
+        if (typeof elm == 'string') return query(elm).classList.toggle(cls)
+        if (elm instanceof HTMLElement) return elm.classList.toggle(cls)
+    }
     const each = (
         callbackfn: (
             value: Element,
@@ -43,7 +47,7 @@ const $ = <T>(elm?: T, bool?: boolean) => {
             if (elm instanceof HTMLElement) elm.style.setProperty(nKey, value)
         }
     }
-    return { event, attr, each, css, query, querys, add, remove }
+    return { event, attr, each, css, query, querys, add, remove, toggle }
 }
 const layers = $('.overlay__layer', true)
 const animateWidthAndHeight = $('.overlay__animate')
@@ -51,13 +55,21 @@ const animateWidthAndHeight = $('.overlay__animate')
 setTimeout(() => {
     animateWidthAndHeight.add('full')
 }, 700)
-$(document).event('mousemove', (e) => {
+$(document).event('mousemove', ((e: MouseEvent) => {
     layers.each((elm) => {
-        let event = <MouseEvent>e
         const speedImage = $(elm).attr('data-speed')
-
-        const x = (window.innerWidth - event.pageX * Number(speedImage)) / 100
-        const y = (window.innerHeight - event.pageY * Number(speedImage)) / 100
+        const x = (window.innerWidth - e.pageX * Number(speedImage)) / 100
+        const y = (window.innerHeight - e.pageY * Number(speedImage)) / 100
         $(elm).css({ transform: `translate(${x}px, ${y}px)` })
     })
-})
+}) as EventListener)
+
+$('#btn-nav').event('click', ((event: CustomEvent) => {
+    const buttonNavbar = <HTMLElement>event.target
+    const is = $(buttonNavbar).toggle('active')
+
+    if (is) $('main').css({ overflow: 'hidden' })
+    else $('main').css({ overflowY: 'auto' })
+
+    $('#navbar').toggle('active')
+}) as EventListener)
