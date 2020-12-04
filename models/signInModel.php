@@ -19,7 +19,6 @@
                 echo '<div class="fixed">';
                     print_r($this->datas);
                 echo '</div>';
-                // e
             }
         }
   
