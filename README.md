@@ -15,11 +15,14 @@
 
 -   HTML
 -   CSS
+-   Sass
 -   MVC
 -   PHP
+-   mysql
 -   JavaScript
 -   TypeScript
 -   git
+-   Gulp
 -   yarn
 
 ## **Front-end** && **Back-end**

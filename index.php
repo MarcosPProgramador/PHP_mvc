@@ -10,3 +10,4 @@ class factoryClass
 }
 
 factoryClass::createfactoryClass('routeController');
+factoryClass::createfactoryClass('userController');

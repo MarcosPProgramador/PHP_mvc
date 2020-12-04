@@ -43,6 +43,7 @@
                 return PATH.$path;
                 return PATH.$pathEr;
         }
+        
         private function setConfig($str, $template = ''){
             $this->str = $str;
             switch ($this->treatURL()) {
