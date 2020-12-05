@@ -14,6 +14,7 @@ class signInController {
             $this->datas = $datas;
             $this->allowAccess();
             
+            $this->test();
         }
     }
     public function test(){
