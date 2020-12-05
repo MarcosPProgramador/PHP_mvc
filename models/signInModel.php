@@ -1,28 +1,12 @@
 <?php
     class signInModel extends connectDatabaseModel {
-        public $datas;
         public function __construct() {
             parent::__construct();
-            $queryDB = $this->getDataFromDatabase();
-            $queryDB->execute($this->getDataform());
-
-            $datas = $queryDB->fetch(PDO::FETCH_ASSOC);
-            $this->datas = $datas;
-
-            if ($this->getDataform() && $this->setCondicion($this->getDataform()))
-                $this->allowAccess();
-            
-        }
-        private function allowAccess()
-        {   
-            if ($this->datas) {
-                echo '<div class="fixed">';
-                    print_r($this->datas);
-                echo '</div>';
-            }
+        
         }
   
-        private function setCondicion($datas)
+  
+        public function setCondicion($datas)
         {   
         
 
@@ -41,20 +25,21 @@
        
             
         }
-        private function getDataform()
+        public function getDataform()
         {   
 
             if (isset($_GET['action'])) {
                 $email = $_GET['email'];
                 $password = $_GET['password'];
                 
+                return [$email, $password];
+                    
                 
             }
-   
-            return [$email, $password];
+            return false;
         }
 
-        private function getDataFromDatabase()
+        public function getDataFromDatabase()
         {   
             $query = "  SELECT 
                         * 

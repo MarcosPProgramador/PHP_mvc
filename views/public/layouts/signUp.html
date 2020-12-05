@@ -63,15 +63,17 @@
             <h2>Sign Up</h2>
             <form method="get">
                 <div class="cover-form__group">
-                    <input type="text" placeholder="Nome" />
-                    <input type="text" placeholder="Sobrenome" />
+                    <input type="text"  name="firstname" placeholder="Nome" />
+                    <input type="text"  name="lastname" placeholder="Sobrenome" />
                 </div>
                 <div class="cover-form__group">
-                    <input type="text" placeholder="E-mail" />
-                    <input type="text" placeholder="Telefone" />
+                    <input type="text"  name="email" placeholder="E-mail" />
+                    <input type="password" name="password" placeholder="Senha" />
+                    <input type="text" name="phone" placeholder="Telefone" />
                 </div>
-                <div class="cover-form__group"></div>
-                <input type="submit" value="Enviar" />
+                <div class="cover-form__group">
+                    <input type="submit" value="Enviar" name="action"/>
+                </div>
             </form>
         </div>
     </div>

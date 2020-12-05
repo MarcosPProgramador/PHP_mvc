@@ -1,13 +1,29 @@
 <?php
 
 include './config.php';
-class factoryClass
+class simpleTasks
 {
-    public static function createfactoryClass($class)
+    public function createfactoryClass($class)
     {
         new $class;
     }
-}
+    public function getPageUrl(){
 
-factoryClass::createfactoryClass('routeController');
-factoryClass::createfactoryClass('userController');
+        $resource = $_GET['url'] ?? 'signup';
+        $resource = '/'. strtolower($resource);
+        return $resource;
+
+    }
+}
+$task = new simpleTasks();
+
+$task->createfactoryClass('routeController');
+
+switch ($task->getPageUrl()) {
+    case '/signin':
+        $task->createfactoryClass('signInController');
+        break;
+    case '/signup':
+        $task->createfactoryClass('signUpController');
+        break;
+}
