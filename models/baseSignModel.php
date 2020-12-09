@@ -38,8 +38,8 @@ class baseSignModel
             
             $condEmail = strlen($email) > 10 && strlen($email) < 40;
             $condPass = strlen($password) > 8 && strlen($password) < 50;
-            $condfirstname = strlen($firstname) > 10 && strlen($firstname) < 30;
-            $condLastname = strlen($lastname) > 10 && strlen($lastname) < 30;
+            $condfirstname = strlen($firstname) > 2 && strlen($firstname) < 30;
+            $condLastname = strlen($lastname) > 2 && strlen($lastname) < 30;
             $condPhone = strlen($phone) > 8 && strlen($phone) < 20;
 
             $cond = $condEmail 
@@ -89,12 +89,32 @@ class baseSignModel
     {   
         $email = $this->email;
         $password = $this->password;
-
+        
         $rgEmail = "/^[a-zA-Z0-9._-]+@+[a-zA-Z0-9._-]+[.]+([a-zA-Z]{2,4})$/";
         $rgPass = "/[a-zA-Z0-9]/";
+        if ($this->signUp) {
+            $firstname = $this->firstname;
+            $lastname = $this->lastname;
+            $phone = $this->phone;
+            
+            $rgFirstname = "/[a-zA-Z]/";
+            $rgLastname = "/[a-zA-Z]/";
+            $rgPhone = "/^([0-9]{2,4})+[ ]+([0-9]{5})+[-]+([0-9]{4})$/";
+            
+            $cond = preg_match($rgEmail, $email) 
+            && preg_match($rgPass, $password)
+            && preg_match($rgFirstname, $firstname) 
+            && preg_match($rgLastname, $lastname)
+            && preg_match($rgPhone, $phone);
 
-        if (preg_match($rgEmail, $email) && preg_match($rgPass, $password)) 
-            return true;
+            if ($cond) return true;
+
+        }
+        else {
+            if (preg_match($rgEmail, $email) && preg_match($rgPass, $password)) 
+                return true;
+
+        }
 
     }
 }

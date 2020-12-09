@@ -2,7 +2,8 @@
     class signUpController
     {
         public function __construct() {
-            new signUpModel();
+            $signUp = new signUpModel();
+            $signUp->getDataForm();
         }
     }
     

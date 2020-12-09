@@ -36,25 +36,43 @@
             
         }
 
-        private function setStyle(){
-            $path = "views/public/styles{$this->treatURL()}.css";
-            $pathEr = "views/public/styles/Error.css";
+        private function setLink($file = false){
+
+            if ($file) {
+                $path = "views/public/styles{$this->treatURL()}.css";
+                $pathEr = "views/public/styles/error.css";
+            }
+            else { 
+                $path = "views/public/js{$this->treatURL()}.js";
+                $pathEr = "views/public/js/error.js";
+            }
+            
             if (file_exists($path)) 
                 return PATH.$path;
                 return PATH.$pathEr;
         }
-        
+        public function pageNoAccess($template, $arr)
+        {
+            if (isset($_SESSION['logged'])) {
+                $this->getTemplate($template);      
+                return $this->getConfig($arr[0], $arr[1], $arr[2]);
+            }
+            return $this->getConfig('error.php', 'Você não tem acesso', 'error.png');
+        }
         private function setConfig($str, $template = ''){
             $this->str = $str;
             switch ($this->treatURL()) {
                 case '/signin':
                     $this->getTemplate($template, 'Sign');
-                    return $this->getConfig('signIn.html', 'welcome');
+                    return $this->getConfig('signIn.php', 'welcome');
                 case '/signup':
                     $this->getTemplate($template, 'Sign');      
-                    return $this->getConfig('signUp.html', 'welcome');
+                    return $this->getConfig('signUp.php', 'welcome');
+                case '/logged':
+                    $arr = ['logged.php', 'Você está logado!', 'login.png'];
+                    return $this->pageNoAccess($template, $arr);
                 default:
-                    return $this->getConfig('error.html', 'Não encontrado', 'error.png');
+                    return $this->getConfig('error.php', 'Não encontrado', 'error.png');
             }
         }
 

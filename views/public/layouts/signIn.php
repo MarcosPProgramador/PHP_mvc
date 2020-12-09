@@ -1,4 +1,4 @@
-<div class="bg background-sign">
+<section class="bg background-sign">
     <div class="background-sign__parallax us-n">
         <div class="parallax__overlay">
             <div class="overlay__animate"></div>
@@ -72,6 +72,7 @@
                     <input type="submit" value="Enviar" name="action"/>
                 </div>
             </form>
+            <a class="cover-form__logged" href="<?php echo PATH?>logged">logged</a>
         </div>
     </div>
-</div>
+</section>

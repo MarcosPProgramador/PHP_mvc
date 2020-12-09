@@ -7,3 +7,12 @@
     background-color: #fff; }
   .cover-form__group input[type='submit']:hover {
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.8); }
+
+.cover-form__logged {
+  bottom: -20px;
+  position: relative;
+  border-radius: 4px;
+  padding: 5px 20px;
+  text-decoration: none;
+  color: #8b3ace;
+  background-color: rgba(53, 23, 78, 0.536); }

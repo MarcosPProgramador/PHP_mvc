@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?php echo $this->setStyle();?>">
+    <link rel="stylesheet" href="<?php echo $this->setLink(true);?>">
     <title><?php echo $this->setConfig('title'); ?></title>
 </head>
 <body>
@@ -20,6 +20,7 @@
         
         ?>
     </main> 
+    <script src="<?php echo $this->setLink(false);?>"></script>
     <script src="./views/public/js/parallax.js"></script>
 
 </body>

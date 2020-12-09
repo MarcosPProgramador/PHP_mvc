@@ -1,8 +1,8 @@
 <?php
-    class signUpModel
+    class signUpModel extends connectDatabaseModel
     {   
         public function __construct() {
-            $this->getDataForm();
+            parent::__construct();
         }
         public function setCondicion($datas)
         {   
@@ -16,40 +16,52 @@
 
             $baseSign = new baseSignModel($email, $password,$firstname, $lastname, $phone);
             
-            $cond = $baseSign->isRgEx() 
-            && $baseSign->isEmpty()
+            $cond = $baseSign->isEmpty()            
+            && $baseSign->isRgEx() 
             && $baseSign->isCount();
 
-            // echo '<div class="fixed">';
-            //     echo '<pre>';
-            //         print_r($_SESSION);
-            //     echo '<pre/>';
-            // echo '</div>';
-            if ($cond) 
+            if ($cond && $this->existEmail($email)) 
                 return true;
-                // return false;
+                return false;
        
             
         }
+        public function existEmail($email)
+        {
+            $query = "SELECT email FROM clients where email = ?";
+            $queryPrepare = $this->connectDB->prepare($query);
+            $queryPrepare->execute([$email]);
+            
+            $fetch = $queryPrepare->fetch(PDO::FETCH_ASSOC);
+            if ($fetch['email']) 
+                return false;
+                return true;
+            
+        }
+        public function insertIntoDatabase($datas)
+        {
+            $query = "  INSERT 
+                        INTO `clients`
+                        values (null, ?, ?, ?, ?, ?)
+            ";
+
+            $queryPrepare = $this->connectDB->prepare($query);
+            $queryPrepare->execute($datas);
+        }
         public function getDataForm(){
-            if ($_GET['action']) {
+            if ($_GET['action'] ?? null) {
                 $firstname = $_GET['firstname'];
                 $lastname = $_GET['lastname'];
                 $email = $_GET['email'];
                 $password = $_GET['password'];
                 $phone = $_GET['phone'];
 
-                $this->setCondicion([$firstname, $lastname, $email, $password, $phone]);
+                $arrDatas = [$firstname, $lastname, $email, $password, $phone];
+                if ($this->setCondicion($arrDatas)) 
+                    $this->insertIntoDatabase($arrDatas);
+                
             }
 
-        }
-        public function test(){
-            echo '<div class="fixed">';
-                echo '<pre>';
-                    print_r($_SESSION);
-                echo '<pre/>';
-            echo '</div>';
-    
         }
     }
     

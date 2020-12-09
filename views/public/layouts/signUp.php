@@ -1,4 +1,4 @@
-<div class="bg background-sign">
+<section class="bg background-sign">
     <div class="background-sign__parallax us-n">
         <div class="parallax__overlay">
             <div class="overlay__animate"></div>
@@ -69,7 +69,7 @@
                 <div class="cover-form__group">
                     <input type="text"  name="email" placeholder="E-mail" />
                     <input type="password" name="password" placeholder="Senha" />
-                    <input type="text" name="phone" placeholder="Telefone" />
+                    <input type="tel" name="phone" placeholder="Telefone" />
                 </div>
                 <div class="cover-form__group">
                     <input type="submit" value="Enviar" name="action"/>
@@ -77,4 +77,4 @@
             </form>
         </div>
     </div>
-</div>
+</section>

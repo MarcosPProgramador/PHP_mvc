@@ -64,7 +64,7 @@ $(document).event('mousemove', ((e: MouseEvent) => {
     })
 }) as EventListener)
 
-$('#btn-nav').event('click', ((event: CustomEvent) => {
+$('#btn-nav').event('click', <EventListener>((event: CustomEvent) => {
     const buttonNavbar = <HTMLElement>event.target
     const is = $(buttonNavbar).toggle('active')
 
@@ -72,4 +72,4 @@ $('#btn-nav').event('click', ((event: CustomEvent) => {
     else $('main').css({ overflowY: 'auto' })
 
     $('#navbar').toggle('active')
-}) as EventListener)
+}))

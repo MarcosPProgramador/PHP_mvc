@@ -14,21 +14,17 @@ class signInController {
             $this->datas = $datas;
             $this->allowAccess();
             
-            $this->test();
         }
-    }
-    public function test(){
-        echo '<div class="fixed">';
-            echo '<pre>';
-                print_r($_SESSION);
-            echo '<pre/>';
-        echo '</div>';
-
     }
     public function allowAccess()
     {    
-        foreach ($this->datas as $key => $value)
-            $_SESSION[$key] = $value; 
-        
+        if ($this->datas) {
+            
+            $_SESSION['logged'] = true;
+
+            foreach ($this->datas as $key => $value)
+                $_SESSION[$key] = $value; 
+            
+        }
     }
 }
