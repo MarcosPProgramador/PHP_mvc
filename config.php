@@ -1,7 +1,7 @@
 <?php 
-
     date_default_timezone_set('America/Sao_paulo');
     define('PATH', 'http://localhost/projetos/linguagens/PHP_mvc/');
+    ob_start();
     session_start();
 
     spl_autoload_register(function ($class){

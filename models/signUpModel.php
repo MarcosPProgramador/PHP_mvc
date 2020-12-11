@@ -28,7 +28,11 @@
         }
         public function existEmail($email)
         {
-            $query = "SELECT email FROM clients where email = ?";
+            $query = "  SELECT email 
+                        FROM clients 
+                        where email = ?
+            ";
+
             $queryPrepare = $this->connectDB->prepare($query);
             $queryPrepare->execute([$email]);
             
@@ -41,7 +45,7 @@
         public function insertIntoDatabase($datas)
         {
             $query = "  INSERT 
-                        INTO `clients`
+                        INTO clients
                         values (null, ?, ?, ?, ?, ?)
             ";
 
@@ -57,8 +61,12 @@
                 $phone = $_GET['phone'];
 
                 $arrDatas = [$firstname, $lastname, $email, $password, $phone];
-                if ($this->setCondicion($arrDatas)) 
+                if ($this->setCondicion($arrDatas)){ 
                     $this->insertIntoDatabase($arrDatas);
+                    
+                    header("Location: signIn");
+                    exit();
+                }
                 
             }
 

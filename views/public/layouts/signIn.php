@@ -69,10 +69,9 @@
                     <input type="text" placeholder="Senha" name="password"/>
                 </div>
                 <div class="cover-form__group">
-                    <input type="submit" value="Enviar" name="action"/>
+                    <input type="submit" value="Enviar" name="action" id="refresh"/>
                 </div>
             </form>
-            <a class="cover-form__logged" href="<?php echo PATH?>logged">logged</a>
         </div>
     </div>
 </section>

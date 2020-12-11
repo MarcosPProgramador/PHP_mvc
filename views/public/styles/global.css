@@ -14,6 +14,7 @@ main {
     min-height: 100vh;
 }
 main {
+    background-color: #1b1d29;
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
@@ -54,6 +55,14 @@ input[type='submit'] {
 }
 input[type='submit']:hover {
     box-shadow: 0 0 3px #f72553, 0 0 6px #f72553;
+}
+.btn {
+    user-select: none;
+    cursor: pointer;
+    padding: 5px 20px;
+    border: 1px solid black;
+    color: #000;
+    background-color: transparent;
 }
 .fixed {
     top: 0;

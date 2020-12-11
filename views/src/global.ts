@@ -9,7 +9,8 @@ const $ = <T>(elm?: T, bool?: boolean) => {
     ): void => {
         if (typeof elm != 'string')
             document.addEventListener(value, listener, options)
-        else query(elm).addEventListener(value, listener, options)
+        if (typeof elm == 'string')
+            query(elm)?.addEventListener(value, listener, options)
     }
     const attr = (qualifiedName: string) => {
         if (typeof elm == 'string')
@@ -17,10 +18,10 @@ const $ = <T>(elm?: T, bool?: boolean) => {
         if (elm instanceof Element) return elm.getAttribute(qualifiedName)
     }
     const add = (cls: string) => {
-        if (typeof elm == 'string') query(elm).classList.add(cls)
+        if (typeof elm == 'string') query(elm)?.classList.add(cls)
     }
     const remove = (cls: string) => {
-        if (typeof elm == 'string') query(elm).classList.remove(cls)
+        if (typeof elm == 'string') query(elm)?.classList.remove(cls)
     }
     const toggle = (cls: string) => {
         if (typeof elm == 'string') return query(elm).classList.toggle(cls)

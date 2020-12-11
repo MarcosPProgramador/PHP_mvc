@@ -17,11 +17,12 @@
             $this->setConfig(false, 'header'); 
             $this->setConfig('layout'); 
             $this->setConfig(false, 'footer'); 
-        
+            
         ?>
     </main> 
+    
+    <script src="<?php echo PATH;?>views/public/js/global.js"></script>
     <script src="<?php echo $this->setLink(false);?>"></script>
-    <script src="<?php echo PATH;?>views/public/js/parallax.js"></script>
 
 </body>
 </html>

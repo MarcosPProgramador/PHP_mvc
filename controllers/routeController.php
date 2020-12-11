@@ -72,7 +72,7 @@
                     $arr = ['logged.php', 'Você está logado!', 'login.png'];
                     return $this->pageNoAccess($template, $arr);
                 default:
-                    return $this->getConfig('error.php', 'Não encontrado', 'error.png');
+                    return $this->getConfig('error.php', 'Not found', 'error.png');
             }
         }
 

@@ -3,10 +3,11 @@ var $ = function (elm, bool) {
     var query = function (elm) { return document.querySelector(elm); };
     var querys = function (elm) { return document.querySelectorAll(elm); };
     var event = function (value, listener, options) {
+        var _a;
         if (typeof elm != 'string')
             document.addEventListener(value, listener, options);
-        else
-            query(elm).addEventListener(value, listener, options);
+        if (typeof elm == 'string')
+            (_a = query(elm)) === null || _a === void 0 ? void 0 : _a.addEventListener(value, listener, options);
     };
     var attr = function (qualifiedName) {
         if (typeof elm == 'string')
@@ -15,12 +16,14 @@ var $ = function (elm, bool) {
             return elm.getAttribute(qualifiedName);
     };
     var add = function (cls) {
+        var _a;
         if (typeof elm == 'string')
-            query(elm).classList.add(cls);
+            (_a = query(elm)) === null || _a === void 0 ? void 0 : _a.classList.add(cls);
     };
     var remove = function (cls) {
+        var _a;
         if (typeof elm == 'string')
-            query(elm).classList.remove(cls);
+            (_a = query(elm)) === null || _a === void 0 ? void 0 : _a.classList.remove(cls);
     };
     var toggle = function (cls) {
         if (typeof elm == 'string')

@@ -24,6 +24,12 @@ class signInController {
 
             foreach ($this->datas as $key => $value)
                 $_SESSION[$key] = $value; 
+
+            try {
+                header("Location: logged");
+            } catch (\Throwable $th) {
+                exit();
+            }
             
         }
     }
