@@ -29,7 +29,7 @@
             
             
         private function getTemplate($template, $ext = ''){
-            $path = "./views/public/templates/{$template}{$ext}.html";
+            $path = "./views/public/templates/{$template}{$ext}.php";
             
             if (file_exists($path)) 
                 include_once $path;
